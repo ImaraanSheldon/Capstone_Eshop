@@ -1,0 +1,4 @@
+Okay...Env is tied to config/index.js...
+config/index.js is tied to model/ ...okay??
+model/ ?tied to controller which is ironically tied to model/index.js
+model/index.js which ties everything to index.js
