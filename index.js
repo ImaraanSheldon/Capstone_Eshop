@@ -1,4 +1,4 @@
-// import { userRouter } from "./controller/userController.js";
+import { userRouter } from "./controller/UsersController.js";
 // import { productsRouter } from "./controller/productsController.js";
 import path from 'path'
 import express from 'express'
@@ -15,7 +15,7 @@ app.use((req,res, next)=>{
     next()
 })
 
-// app.use('/users', userRouter);
+app.use('/users', userRouter);
 // app.use('/products', productsRouter);
 
 // Middleware
