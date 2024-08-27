@@ -24,6 +24,15 @@ userRouter.post('/register', async (req, res) => {
     await users.registerUser(req, res);
 });
 
+// Update a user by ID
+userRouter.patch('/:id', async (req, res) => {
+    await users.updateUser(req, res);
+});
+
+// Delete a user by ID
+userRouter.delete('/:id',  (req, res) => {
+    users.deleteUser(req, res);
+});
 
 
 

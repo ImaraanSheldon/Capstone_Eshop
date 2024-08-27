@@ -15,14 +15,14 @@ app.use((req,res, next)=>{
     next()
 })
 
-app.use('/users', userRouter);
-// app.use('/products', productsRouter);
-
 // Middleware
 app.use(express.static('./static'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('/users', userRouter);
+// app.use('/products', productsRouter);
+
 
 // Endpoint
 app.get('^/$|/eShop', (req, res) => {
