@@ -101,69 +101,69 @@ class Users {
     }
   }
 
-      // Delete
-      deleteUser(req,res){
-        try{
-            const strQry = `
+  // Delete
+  deleteUser(req, res) {
+    try {
+      const strQry = `
             DELETE FROM users WHERE id = ${req.params.id}
-            `
-    
-            DB.query(strQry, (err)=>{
-                if (err) throw new Error(error)
-                res.json({
-                status: res.statusCode,
-                msg: 'A user\'s information was removed, permanently'
-            })
-            })
-        }catch(e){
-            res.json({
-                status: 404,
-                msg: e.message
-            })
-        }
-    }
+            `;
 
-    // login
-    async loginUser(req, res){
-        try{
-            const {email, userPass} = req.body
-            const strQry = `
-            SELECT username, userPass, email, full_name, account_status, userType, profile_picture, date_of_birth, gender FROM users WHERE email = '${email}'
-            `
-            DB.query(strQry, async (err, result)=>{
-                if(err) throw new Error('ok')
-                if(!result?.length){
-                    res.json({
-                        status: 401,
-                        msg: "You provided a wrong email"
-                    })
-                }else{
-                    const isValidPass = await compare(userPass, result[0].userPass)
-                    if(isValidPass){
-                        const token = createToken({
-                            email,
-                            userPass
-                        })
-                        res.json({
-                            status:res.statusCode,
-                            token,
-                            result: result[0]
-                        })
-                    }else{
-                        res.json({
-                            status: 401,
-                            msg: e.message
-                        })
-                    }
-                }
-            })
-        }catch(e){
-            res.json({
-                status: 401,
-                msg: 'invalid password or you have not registered'
-            })
-        }
+      DB.query(strQry, (err) => {
+        if (err) throw new Error(error);
+        res.json({
+          status: res.statusCode,
+          msg: "A user's information was removed, permanently",
+        });
+      });
+    } catch (e) {
+      res.json({
+        status: 404,
+        msg: e.message,
+      });
     }
+  }
+
+  // login
+  async loginUser(req, res) {
+    try {
+      const { email, userPass } = req.body;
+      const strQry = `
+            SELECT username, userPass, email, full_name, account_status, userType, profile_picture, date_of_birth, gender FROM users WHERE email = '${email}'
+            `;
+      DB.query(strQry, async (err, result) => {
+        if (err) throw new Error("ok");
+        if (!result?.length) {
+          res.json({
+            status: 401,
+            msg: "You provided a wrong email",
+          });
+        } else {
+          const isValidPass = await compare(userPass, result[0].userPass);
+          if (isValidPass) {
+            const token = createToken({
+              email,
+              userPass,
+            });
+            res.json({
+              status: res.statusCode,
+              token,
+              result: result[0],
+            });
+          } else {
+            res.json({
+              status: 401,
+              msg: e.message,
+            });
+          }
+        }
+      });
+    } catch (e) {
+      res.json({
+        status: 401,
+        msg: "invalid password or you have not registered",
+      });
+    }
+  }
 }
 
 export { Users };

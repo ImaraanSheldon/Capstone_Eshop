@@ -1,5 +1,5 @@
 import { userRouter } from "./controller/UsersController.js";
-// import { productsRouter } from "./controller/productsController.js";
+import { gamesRouter } from "./controller/GameController.js";
 import path from 'path'
 import express from 'express'
 import bodyParser from "body-parser";
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/users', userRouter);
-// app.use('/products', productsRouter);
+app.use('/games', gamesRouter);
 
 
 // Endpoint

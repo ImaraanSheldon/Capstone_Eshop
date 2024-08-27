@@ -34,8 +34,10 @@ userRouter.delete('/:id',  (req, res) => {
     users.deleteUser(req, res);
 });
 
-
-
+// Login a user
+userRouter.post('/login', async (req, res) => {
+    await users.loginUser(req, res);
+});
 
 // Hi...<3
 export {
