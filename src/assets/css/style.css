@@ -1,0 +1,232 @@
+::-webkit-scrollbar{
+    display:none;
+}
+*,
+::before,
+::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #212020;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+#app {
+  overflow: hidden;
+}
+p{
+  color: var(--Color-Text-Fondant);
+}
+
+:root{
+    --Color-Background-Charcoal:#fff;
+    --Color-Background2-Juniper:#595240;
+    --Color-Accent-Pinot:#5B0A1A;
+    --Color-Header-Blossom:#D6C3BD;
+    --Color-Text-Fondant:#EFEBE6;
+    --SideBar-Width: 300px;
+    --Font-Main-Hammersmith:"Hammersmith One", sans-serif;
+}
+.text-brand{
+  color: var(--Color-Text-Fondant);
+}
+.bg-base{
+  background-color: var(--Color-Background2-Juniper);
+}
+.full-height{
+  min-height: 100vh;
+  height:100%;
+  background-color: var(--Color-Background-Charcoal);
+  max-width: 100vw;
+  display: flex;
+  flex-flow:column nowrap;
+  justify-content: center;
+  padding: 80px 0;
+  border-bottom: 2px solid rgb(214, 195, 189, 0.5);
+}
+.shadow-effect{
+  transition: all 0.5s;
+
+  &:hover{
+    box-shadow: -6px 6px 0 0 var(--Color-Accent-Pinot);
+  }
+}
+
+.iconbox{
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Color-Accent-Pinot);
+  color: #ffffff;
+  font-size: 2rem;
+}
+
+.hammersmith-one-regular {
+    font-family: "Hammersmith One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+/* Base styling on Header tags */
+  h1,h2,h3,h4,h5,h6{
+    color: var(--Color-Header-Blossom);
+    font-weight: 700;
+  }
+/* Base styling on achor tag */
+  a{
+    text-decoration: none;
+    color: var(--Color-Text-Fondant);
+    transition: all 0.4s ease;
+    font-family: var(--Font-Main-Hammersmith);
+  }
+  a:hover{
+    color: var(--Color-Background2-Juniper);
+  }
+/* Base styling on Image tag */
+  img{
+    width:100%;
+  }
+  img[alt='Mugshot']{
+    aspect-ratio: 1/1;
+  }
+  img[alt='No']{
+    aspect-ratio: 1/1;
+    width: 138px;
+    height: 138px;
+  }
+  img[alt='Card1']{
+    aspect-ratio: 10/7;
+    width: 100%;
+  }
+  /* Navbar */
+  .navbar{
+    background-color: var(--Color-Background2-Juniper);
+  }
+
+  ul li .nav-link{
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--Color-Text-Fondant);
+
+    &:hover{
+      color: var(--Color-Header-Blossom);
+    }
+  }
+  .nav-link.active{
+    color: var(--Color-Header-Blossom);
+  }
+
+  @media (min-width: 992px) {
+    #footer{
+      padding-left: var(--SideBar-Width);
+    }
+    .navbar{
+        min-height: 100vh;
+        width: var(--SideBar-Width);
+        background: linear-gradient(rgb(89, 82, 64, 0.9), rgb(89, 82, 64, 0.9)), url(https://imaraansheldon.github.io/allImages/portfolio-Images/Nav_Background.jpeg);
+        background-size:cover;
+        background-position: center;
+    }
+    .navbar-brand img{
+      border: 8px solid var(--Color-Header-Blossom) ;
+    }
+  /* Content Wrapper */
+   #Content-Wrapper{
+    padding-left: var(--SideBar-Width);
+    font-family: var(--Font-Main-Hammersmith);
+    background-color: #212020;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  /* /Content Wrapper/ */
+
+  }
+  
+  /* btn */
+  .btn{
+    padding: 12px 28px;
+    font-weight: 700;
+    color: var(--Color-Text-Fondant);
+  }
+
+  .btn-brand{
+    background-color: var(--Color-Accent-Pinot);
+    color: var(--Color-Header-Blossom);
+    border-color: var(--Color-Header-Blossom);
+    &:hover,
+     :focus{
+      background-color: var(--Color-Background-Charcoal);
+      color: var(--Color-Header-Blossom);
+      border-color: var(--Color-Header-Blossom);
+     }
+  }
+  /* /btn/ */
+
+  .link-custom{
+    font-weight: 700;
+    position: relative;
+    
+    &:hover{
+      color: var(--Color-Header-Blossom);
+    }
+      
+    }   
+  .link-custom::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--Color-Header-Blossom);
+    position: absolute;
+    left:0;
+    top: 110%;
+    transition: all 0.5s ease;
+    }
+    .link-custom:hover::after{
+      width:100%;
+      transition: all 0.5 ease-in;
+    }
+
+    /* Card */
+  .custom-card .custom-card-image{
+    overflow: hidden;
+  }
+  .custom-card .custom-card-image img{
+    transition: all 0.4s ease;
+  }
+  .custom-card:hover .custom-card-image img{
+    transform: scale(1.1);
+  }
+    /* /Card/ */
+
+    .form-control{
+      background-color:var(--Color-Text-Fondant);
+      border-color: var(--Color-Header-Blossom);
+      color:black;
+    }
+    .form-control:focus{
+      border-color: var(--Color-Accent-Pinot);
+      box-shadow: none;
+    }
+    .form-control::placholder{
+      color: black;
+    }
+    input.form-control{
+      height: 44px;
+    }
+    .Return{
+      width: 32px;
+      height: 32px;
+    }
+    .social-links{
+      padding: 5px;
+      background-color: var(--Color-Text-Fondant);
+    }
+
+    /* footer */
+    .footer-icon{
+      color: white;
+    }
