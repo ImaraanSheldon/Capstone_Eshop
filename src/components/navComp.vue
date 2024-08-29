@@ -17,21 +17,29 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
+          <ul class="navbar-nav ms-auto flex-lg-column text-lg-start">
             <li class="nav-item">
-              <router-link class="nav-link active" aria-current="page" to="/">Recent Releases</router-link>
+              <router-link class="nav-link active" aria-current="page" to="/search">
+                <i class="las la-search"></i>
+                search</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/featured">Featured</router-link>
+              <router-link class="nav-link active" aria-current="page" to="/">Discover</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/deals">Game Deals</router-link>
+              <router-link class="nav-link active" aria-current="page" to="/recent">Recent Releases</router-link>
+            </li>
+            <!-- <li class="nav-item"> -->
+              <!-- <router-link class="nav-link" to="/featured">Featured</router-link> -->
+            <!-- </li> -->
+            <li class="nav-item">
+              <router-link class="nav-link" to="/deals">Current Offers</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/sellers">Best Sellers</router-link>
+              <router-link class="nav-link" to="/sellers">Charts</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#skills">Coming Soon</a>
+              <router-link class="nav-link" to="/coming">Coming Soon</router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#testimonials">Enter Code</a>

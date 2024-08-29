@@ -3,10 +3,23 @@ import { createRouter, createWebHistory } from 'vue-router'
 import RecentProducts from '@/views/recentProducts.vue'
 import featuredProducts from '@/views/featuredProducts.vue'
 import GameDeals from '@/views/gameDeals.vue'
+import ComingSoon from '@/views/comingSoon.vue'
+import SearchFunc from '@/views/searchFunc.vue'
+import DiscoverNew from '@/views/discoverNew.vue'
 
 const routes = [
   {
+    path: '/search',
+    name: 'search',
+    component: SearchFunc
+    },
+  {
     path: '/',
+    name: 'discover',
+    component: DiscoverNew
+    },
+  {
+    path: '/recent',
     name: 'recentProducts',
     component: RecentProducts
   },
@@ -24,6 +37,11 @@ const routes = [
     path: '/sellers',
     name: 'bestSellers',
     component: GameDeals
+  },
+  {
+    path: '/coming',
+    name: 'comingSoon',
+    component: ComingSoon
   },
 ]
 

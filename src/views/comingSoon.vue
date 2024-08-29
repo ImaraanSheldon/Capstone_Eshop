@@ -1,7 +1,7 @@
 <template>
     <section class="full-height">
         <div class="d-flex justify-content-between">
-            <h1>Best Sellers</h1>
+            <h1>Coming Soon</h1>
             <div>
                 logo
             </div>

@@ -1,5 +1,5 @@
 <template>
-  <footer class="container">
+  <footer class="container fixed-bottom">
     <div class="row p-4">
         <div class="col-sm-6 text-center">
 
@@ -50,7 +50,8 @@ export default {
  @media (min-width: 768px){
   .container{
   background-color:var(--Color-Accent-Pinot);
-  margin-left:240px;
+  /* margin-left:300px; */
+  min-width: 100vw;
 }
 
   }
