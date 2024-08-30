@@ -20,8 +20,7 @@
           <ul class="navbar-nav ms-auto flex-lg-column text-lg-start">
             <li class="nav-item">
               <router-link class="nav-link active" aria-current="page" to="/search">
-                <i class="las la-search"></i>
-                search</router-link>
+                <i class="las la-search"></i>search</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link active" aria-current="page" to="/">Discover</router-link>
