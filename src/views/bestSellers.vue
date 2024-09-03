@@ -3,8 +3,15 @@
         <div class="d-flex justify-content-between">
             <h1>Best Sellers</h1>
             <div>
-                logo
+                <userImage/>
             </div>
         </div>
+
+        <chartsHome/>
     </section>
 </template>
+
+<script setup>
+    import userImage from '@/components/userImage.vue';
+    import chartsHome from '@/components/chartsHome.vue';
+</script>

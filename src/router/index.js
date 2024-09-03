@@ -6,6 +6,8 @@ import GameDeals from '@/views/gameDeals.vue'
 import ComingSoon from '@/views/comingSoon.vue'
 import SearchFunc from '@/views/searchFunc.vue'
 import DiscoverNew from '@/views/discoverNew.vue'
+import bestSellers from '@/views/bestSellers.vue'
+import cartPage from '@/views/cartPage.vue'
 
 const routes = [
   {
@@ -36,12 +38,17 @@ const routes = [
   {
     path: '/sellers',
     name: 'bestSellers',
-    component: GameDeals
+    component: bestSellers
   },
   {
     path: '/coming',
     name: 'comingSoon',
     component: ComingSoon
+  },
+  {
+    path: '/cart',
+    name: 'cartPage',
+    component: cartPage
   },
 ]
 

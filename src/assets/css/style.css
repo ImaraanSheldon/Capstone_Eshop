@@ -22,12 +22,12 @@ p{
 
 :root{
     --Color-Background-Charcoal:#fff;
-    --Color-Background2-Juniper:#595240;
+    --Color-Background2-Juniper:#ff7d00;
     --Color-Accent-Pinot:#5B0A1A;
     --Color-Header-Blossom:#D6C3BD;
     --Color-Text-Fondant:#EFEBE6;
     --SideBar-Width: 300px;
-    --Font-Main-Hammersmith:"Hammersmith One", sans-serif;
+    --Font-Main-Hammersmith:"Arimo", sans-serif;
 }
 .text-brand{
   color: var(--Color-Text-Fondant);
@@ -65,11 +65,11 @@ p{
   font-size: 2rem;
 }
 
-.hammersmith-one-regular {
-    font-family: "Hammersmith One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+.arimo {
+  font-family: "Arimo", sans-serif;
+  /* font-optical-sizing: auto; */
+  /* font-style: normal; */
+}
 
 /* Base styling on Header tags */
   h1,h2,h3,h4,h5,h6{
@@ -77,13 +77,13 @@ p{
     font-weight: 700;
   }
 /* Base styling on achor tag */
-  a{
+  .nav-text{
     text-decoration: none;
     color: var(--Color-Text-Fondant);
     transition: all 0.4s ease;
     font-family: var(--Font-Main-Hammersmith);
   }
-  a:hover{
+  .nav-text:hover{
     color: var(--Color-Background2-Juniper);
   }
 /* Base styling on Image tag */
@@ -110,7 +110,8 @@ p{
   }
 
   ul li .nav-link{
-    font-weight: 700;
+    font-size: large;
+    /* font-weight: 700; */
     text-transform: uppercase;
     color: var(--Color-Text-Fondant);
 
@@ -127,14 +128,9 @@ p{
       margin-left: var(--SideBar-Width);
     }
     .navbar{
-        min-height: 100vh;
+        min-height: 85vh;
         width: var(--SideBar-Width);
-        background: linear-gradient(rgb(89, 82, 64, 0.9), rgb(89, 82, 64, 0.9)), url(https://imaraansheldon.github.io/allImages/portfolio-Images/Nav_Background.jpeg);
-        background-size:cover;
-        background-position: center;
-    }
-    .navbar-brand img{
-      border: 8px solid var(--Color-Header-Blossom) ;
+
     }
   /* Content Wrapper */
    #Content-Wrapper{
@@ -193,6 +189,9 @@ p{
     }
 
     /* Card */
+  .card-head{
+    border: 1px solid #000;
+  }
   .custom-card .custom-card-image{
     overflow: hidden;
   }
