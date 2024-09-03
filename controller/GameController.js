@@ -10,10 +10,32 @@ gamesRouter.use(bodyParser.json());
 gamesRouter.get('/', (req, res) => {
     games.fetchGames(req, res);
 });
+gamesRouter.get('/Nintendo_Published', (req, res) => {
+    games.fetchPublished(req, res);
+});
+
+// Published by nintendo
+gamesRouter.get('/Nintendo_Developed', (req, res)=>{
+    games.fetchDeveloped(req, res);
+});
+
+// Search
+gamesRouter.get('/search', (req, res)=>{
+    games.searchGames(req, res);
+});
+
+// Discounts
+gamesRouter.get('/discounts', (req, res)=>{
+    games.fetchDiscounts(req, res);
+});
 
 // Fetch recent all games
 gamesRouter.get('/recent', (req, res) => {
     games.recentGames(req, res);
+});
+// Fetch Best sellers
+gamesRouter.get('/charts', (req, res) => {
+    games.fetchCharts(req, res);
 });
 
 // Fetch recent a single game
@@ -35,7 +57,6 @@ gamesRouter.patch('/:id', (req, res) => {  // Corrected the endpoint path
 gamesRouter.delete('/:id', (req, res) => {
     games.deleteGame(req, res);
 });
-
 
 
 export{
