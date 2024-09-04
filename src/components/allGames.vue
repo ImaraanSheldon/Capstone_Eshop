@@ -1,18 +1,29 @@
 <template>
 
-    <div class="container row border" v-if="games">
-
-                <!-- Loop through each published item -->
-                <div class="col-lg-6" v-for=" game in games" :key="game.id">
-                    <div class="card border">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Title: {{ game.title }}</h5>
-                            <p class="card-text">Genre: {{ game.genre }}</p>
-                            <p class="card-text">Price: {{ game.price }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+       <!-- plan B -->
+       <div class="row gy-4" v-if="games?.length">
+  
+  <div class="col-md-6 mb-4" v-for="x in games" :key="x.id">
+    <div class="custom-card h-100 rounded-4 p-2 bg-base shadow-effect">
+      <div class="custom-card-image rounded-4">
+        <img :src="x.cover_image" alt="Ikumi<3">
+      </div>
+      <div class="custom-card-content internal-screaming">
+          <h4 class="my-3">{{ x.title }}</h4>
+          <p>{{ x.description }}</p>
+          <p>{{ x.price }}</p>
+          <div class="d-flex justify-content-evenly">
+              <a href="#" class="btn btn-brand" target="_blank">View Github</a>
+              <a href="#" class="btn btn-brand" target="_blank">View Project</a>
+          </div>
+      </div>
+      <!-- <a href="#About" class="link-custom">{{ x.services_Type }}</a> -->
+    </div>
+  </div>
+</div>
+<div v-else class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+  </div>
 </template>
 
 <script setup>

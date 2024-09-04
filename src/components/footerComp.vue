@@ -1,6 +1,6 @@
 <template>
   <footer class="container fixed-bottom">
-    <div class="row p-4">
+    <div class="row">
         <div class="col-sm-6 text-center">
 
           <h6 class="text-brand">IMARAAN SHELDON &copy; Rights Reserved <span>{{cYear}}</span></h6>
@@ -65,7 +65,7 @@ export default {
     }
    /* btn */
    .btn{
-      padding: 12px 28px;
+      /* padding: 12px 28px; */
       font-weight: 700;
       color: var(--Color-Text-Fondant);
     }

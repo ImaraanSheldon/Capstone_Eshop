@@ -128,7 +128,7 @@ p{
       margin-left: var(--SideBar-Width);
     }
     .navbar{
-        min-height: 85vh;
+        min-height: 90vh;
         width: var(--SideBar-Width);
 
     }
