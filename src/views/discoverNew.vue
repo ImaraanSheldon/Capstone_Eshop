@@ -1,14 +1,14 @@
 <template>
     <section class="full-height">
-
-        
-
-        <div class="d-flex justify-content-between">
-            <h1>Discover</h1>
+        <div class="d-flex justify-content-between align-items-center pb-5">
+            <strong class="display-5">Discover</strong>
             <div>
-                <userImage/>
+                <router-link to="/">
+                    <userImage/>
+                </router-link>
             </div>
         </div>
+
         <discoverHome/>
 
         <!-- For Users -->

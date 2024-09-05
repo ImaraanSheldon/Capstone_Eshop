@@ -8,6 +8,7 @@ import SearchFunc from '@/views/searchFunc.vue'
 import DiscoverNew from '@/views/discoverNew.vue'
 import bestSellers from '@/views/bestSellers.vue'
 import cartPage from '@/views/cartPage.vue'
+import SingleProduct from '@/views/singleProduct.vue'
 
 const routes = [
   {
@@ -49,6 +50,11 @@ const routes = [
     path: '/cart',
     name: 'cartPage',
     component: cartPage
+  },
+  {
+    path: '/single/:id',
+    name: 'ProductDetail',
+    component: SingleProduct
   },
 ]
 

@@ -17,14 +17,14 @@ body{
   overflow: hidden;
 }
 p{
-  color: var(--Color-Text-Fondant);
+  color: #000;
 }
 
 :root{
     --Color-Background-Charcoal:#fff;
     --Color-Background2-Juniper:#ff7d00;
-    --Color-Accent-Pinot:#5B0A1A;
-    --Color-Header-Blossom:#D6C3BD;
+    --Color-Accent-Pinot:#00c3e3;
+    --Color-Header-Blossom:#000;
     --Color-Text-Fondant:#EFEBE6;
     --SideBar-Width: 300px;
     --Font-Main-Hammersmith:"Arimo", sans-serif;
@@ -42,8 +42,8 @@ p{
   max-width: 100vw;
   display: flex;
   flex-flow:column nowrap;
-  justify-content: center;
-  padding: 80px 0;
+  justify-content: start;
+  padding: 60px;
   border-bottom: 2px solid rgb(214, 195, 189, 0.5);
 }
 .shadow-effect{
@@ -91,9 +91,16 @@ p{
     width:100%;
   }
   img[alt='Mugshot']{
+    transition: ease-in 0.5s;
     aspect-ratio: 1/1;
-    width: 128px;
-    height: 128px;
+    width: 96px;
+    height: 96px;
+    border: 5px solid #000;
+
+    &:hover{
+      transition: ease-in 0.25s;
+      border: 5px solid var(--Color-Accent-Pinot);
+    }
   }
   img[alt='No']{
     aspect-ratio: 1/1;
@@ -225,6 +232,16 @@ p{
     .social-links{
       padding: 5px;
       background-color: var(--Color-Text-Fondant);
+    }
+    .arrow{
+      transition: ease-in-out 0.25s;
+      font-size: 32px;
+      color: #000;
+
+      &:hover{
+        transition: ease-in-out 0.25s;
+        color: var(--Color-Accent-Pinot);
+      }
     }
 
     /* footer */
