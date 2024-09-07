@@ -1,5 +1,6 @@
 <template>
-    <div class=" my-5">
+  <section class="full-height">
+  <div class=" my-5">
       <h1 class="mb-4">Your Cart</h1>
       <!-- <p class="text-white">{{ cartItems }} {{ typeof cartItems }}</p> -->
       <div v-if="cartItems && cartItems.length">
@@ -21,6 +22,7 @@
         <p class="text-muted">Your cart is empty.</p>
       </div>
     </div>
+  </section>
   </template>
   
   <script setup>

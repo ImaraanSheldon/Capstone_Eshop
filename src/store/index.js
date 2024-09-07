@@ -186,7 +186,7 @@ export default createStore({
           commit('setUser', { message, result, token });
           cookies.set('LegitUser', { token, message, result });
           applyToken(token);
-          router.push({ name: 'home' });
+          router.push({ name: 'discover' });
         } else {
           // Show error message with SweetAlert2
           await Swal.fire({
