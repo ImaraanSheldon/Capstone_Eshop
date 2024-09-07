@@ -142,8 +142,10 @@ class Games {
   updateGame(req, res) {
     try {
       let data = req.body;
-      const strQry = `UPDATE game SET ? WHERE id = ${req.params.id}`;
+      const strQry = `UPDATE games SET ? WHERE id = ${req.params.id}`;
       DB.query(strQry, [data], (err) => {
+        console.log(err);
+        
         if (err) throw new Error("Failed to update product");
         res.json({
           status: res.statusCode,
@@ -208,10 +210,11 @@ class Games {
                 SELECT id, title, description, genre, release_date, price, developer, publisher, platform, cover_image, gameplay_imageOne, gameplay_imageTwo, rating, stock_quantity, amount_sold 
                 FROM games 
                 WHERE developer = 'Nintendo';
-
                 `;
     try {
       DB.query(strQry, (err, results) => {
+        console.log(err);
+        
         if (err) throw new Error("Can't find games developed by Nintendo");
         res.json({
           status: res.statusCode,

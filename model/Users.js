@@ -128,7 +128,7 @@ class Users {
     try {
       const { email, userPass } = req.body;
       const strQry = `
-            SELECT username, userPass, email, full_name, account_status, userType, profile_picture, date_of_birth, gender FROM users WHERE email = '${email}'
+            SELECT * FROM users WHERE email = '${email}'
             `;
       DB.query(strQry, async (err, result) => {
         if (err) throw new Error("ok");
@@ -152,7 +152,7 @@ class Users {
           } else {
             res.json({
               status: 401,
-              msg: e.message,
+              msg: e.msg,
             });
           }
         }
