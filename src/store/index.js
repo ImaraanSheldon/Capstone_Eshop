@@ -1,7 +1,9 @@
 import { createStore } from "vuex";
 import axios from "axios";
-// import Swal from "sweetalert2/dist/sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2";
 import { useCookies } from "vue3-cookies";
+import { applyToken } from "@/service/Authenticate";
+import router from "@/router";
 
 const { cookies } = useCookies();
 
@@ -10,6 +12,7 @@ const portURL = "http://localhost:4324/";
 export default createStore({
   state: {
     users: null,
+    user:null,
     games: null,
     published: null,
     developed: null,
@@ -18,11 +21,17 @@ export default createStore({
     charts: null,
     filteredGames: [],
     cart: JSON.parse(cookies.get("cart")) || [],
+    token:null,
+    role:null,
+    product: null
   },
   getters: {},
   mutations: {
     setUsers(state, value) {
       state.users = value;
+    },
+    setUser(state, value) {
+      state.user = value;
     },
     setPublished(state, value) {
       state.published = value;
@@ -55,6 +64,9 @@ export default createStore({
     },
     removeFromCart(state, itemId) {
       state.cart = state.cart.filter(item => item.id !== itemId);
+    },
+    setProduct(state, product) {
+      state.product = product
     },
   },
   actions: {
@@ -151,6 +163,55 @@ export default createStore({
     toCart({ commit }, game) {
       commit("addToCart", game);
       cookies.set("cart", JSON.stringify(this.state.cart));
+    },
+
+    // login
+    async login({ commit }, payload) {
+      try {
+        console.log(payload);
+        
+        const response = await axios.post(`${portURL}users/login`, payload);
+        const { message, result, token } = response.data;
+  
+        if (result) {
+          // Show success message with SweetAlert2
+          await Swal.fire({
+            title: 'Success!',
+            text: message,
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Okay'
+          });
+  
+          commit('setUser', { message, result, token });
+          cookies.set('LegitUser', { token, message, result });
+          applyToken(token);
+          router.push({ name: 'home' });
+        } else {
+          // Show error message with SweetAlert2
+          await Swal.fire({
+            title: 'Error!',
+            text: message,
+            icon: 'error',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Okay'
+          });
+        }
+      } catch (e) {
+        // Show error message with SweetAlert2
+        await Swal.fire({
+          title: 'Error!',
+          text: e.message,
+          icon: 'error',
+          confirmButtonColor: '#d33',
+          confirmButtonText: 'Okay'
+        });
+      }
+    },
+
+    async fetchProductById(context) {
+      let { results } = await (await axios.get(`${portURL}games/:id`)).data;
+      context.commit("setProduct", results);
     },
   },
   modules: {},

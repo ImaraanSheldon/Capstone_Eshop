@@ -9,6 +9,7 @@ import DiscoverNew from '@/views/discoverNew.vue'
 import bestSellers from '@/views/bestSellers.vue'
 import cartPage from '@/views/cartPage.vue'
 import SingleProduct from '@/views/singleProduct.vue'
+import LoginPage from '@/views/loginPage.vue'
 
 const routes = [
   {
@@ -55,6 +56,11 @@ const routes = [
     path: '/single/:id',
     name: 'ProductDetail',
     component: SingleProduct
+  },
+  {
+    path: '/login',
+    name: 'LoginPage',
+    component: LoginPage
   },
 ]
 

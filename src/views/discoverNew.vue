@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-between align-items-center pb-5">
             <strong class="display-5">Discover</strong>
             <div>
-                <router-link to="/">
+                <router-link to="/login">
                     <userImage/>
                 </router-link>
             </div>

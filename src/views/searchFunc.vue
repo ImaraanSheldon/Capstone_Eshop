@@ -1,60 +1,73 @@
 <template>
-  <div class="container mt-4">
-    <!-- Search Form -->
-    <form @submit.prevent="applyFilters">
-      <div class="row mb-4">
-        <div class="col-md-4">
-          <input type="text" v-model="searchTerm" class="form-control" placeholder="Search by title">
+    <section class="full-height">
+        <div class="d-flex justify-content-between">
+            <h1>Search</h1>
+            <div>
+                <userImage/>
+            </div>
         </div>
-        <div class="col-md-3">
-          <select v-model="genre" class="form-select">
-            <option value="">All Genres</option>
-            <option value="Action">Action</option>
-            <option value="Adventure">Adventure</option>
-            <!-- Add more genres as needed -->
+        <!-- Search Form -->
+        <form @submit.prevent="applyFilters">
+          <div class="row m-4">
+            <div class="col-md-12 pb-3 mt-sm-5">
+              <input type="text" v-model="searchTerm" class="form-control box rounded-pill" placeholder="Search by title">
+            </div>
+            <div class="col-md-4">
+              <select v-model="genre" class="form-select box rounded-pill">
+                <option value="">All Genres</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Shooter">Shooter</option>
+                <option value="RPG">RPG</option>
+                <option value="Fighting">Fighting</option>
+                <option value="Racing">Racing</option>
+                <!-- Add more genres as needed -->
+              </select>
+            </div>
+            <div class="col-md-4 ">
+              <input type="number" v-model.number="minPrice" class="form-control box rounded-pill" placeholder="Min Price" step="1">
+            </div>
+            <div class="col-md-4">
+              <input type="number" v-model.number="maxPrice" class="form-control box rounded-pill" placeholder="Max Price" step="1">
+            </div>
+          </div>
+          <div class="col-md-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary p-3 rounded-pill">SEARCH</button>
+          </div>
+        </form>
+    
+        <!-- Sorting Options -->
+        <div class="mt-5 row text-center">
+          <label for="sortBy" class="form-label h2">Sort By:</label>
+          <select v-model="sortOption" @change="applyFilters" class="form-select">
+            <option value="">Select Sorting Option</option>
+            <option value="priceAsc">Price: Low to High</option>
+            <option value="priceDesc">Price: High to Low</option>
+            <option value="releaseDateAsc">Release Date: Old to New</option>
+            <option value="releaseDateDesc">Release Date: New to Old</option>
           </select>
         </div>
-        <div class="col-md-2">
-          <input type="number" v-model.number="minPrice" class="form-control" placeholder="Min Price" step="0.01">
-        </div>
-        <div class="col-md-2">
-          <input type="number" v-model.number="maxPrice" class="form-control" placeholder="Max Price" step="0.01">
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Apply Filters</button>
-    </form>
-
-    <!-- Sorting Options -->
-    <div class="mt-4">
-      <label for="sortBy" class="form-label">Sort By:</label>
-      <select v-model="sortOption" @change="applyFilters" class="form-select">
-        <option value="">Select Sorting Option</option>
-        <option value="priceAsc">Price: Low to High</option>
-        <option value="priceDesc">Price: High to Low</option>
-        <option value="releaseDateAsc">Release Date: Old to New</option>
-        <option value="releaseDateDesc">Release Date: New to Old</option>
-      </select>
-    </div>
-
-    <!-- Display Filtered and Sorted Games -->
-    <div class="row mt-4 border" v-if="filteredGames?.length > 0">
-      <div class="col-lg-6" v-for="game in filteredGames" :key="game.id">
-        <div class="card border mb-3">
-          <div class="card-body">
-            <h5 class="card-title fw-bold">Title: {{ game.title }}</h5>
-            <p class="card-text">Genre: {{ game.genre }}</p>
-            <p class="card-text">Price: ${{ game.price }}</p>
+    
+        <!-- Display Filtered and Sorted Games -->
+        <div class="row mt-4 border" v-if="filteredGames?.length > 0">
+          <div class="col-lg-6" v-for="game in filteredGames" :key="game.id">
+            <div class="card border mb-3">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Title: {{ game.title }}</h5>
+                <p class="card-text">Genre: {{ game.genre }}</p>
+                <p class="card-text">Price: ${{ game.price }}</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <p v-else>No games found.</p>
-  </div>
+        <p v-else class="text-center m-5 display-5">No games found.</p>
+    </section>
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useStore } from 'vuex'
+import userImage from '@/components/userImage.vue';
 
 const store = useStore()
 
@@ -90,6 +103,11 @@ watch(sortOption, () => {
   
   .card-head {
     padding: 15px;
+  }
+
+  .box{
+    height: 50px;
+    border: 5px solid var(--Color-Accent-Pinot);
   }
   </style>
   
