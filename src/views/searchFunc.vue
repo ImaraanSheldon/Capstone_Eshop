@@ -1,7 +1,7 @@
 <template>
     <section class="full-height">
         <div class="d-flex justify-content-between">
-            <h1>Search</h1>
+            <h1 class="display-4">Search</h1>
             <div>
                 <userImage/>
             </div>
@@ -39,7 +39,7 @@
         <!-- Sorting Options -->
         <div class="mt-5 row text-center">
           <label for="sortBy" class="form-label h2">Sort By:</label>
-          <select v-model="sortOption" @change="applyFilters" class="form-select">
+          <select v-model="sortOption" @change="applyFilters" class="form-select box rounded-pill">
             <option value="">Select Sorting Option</option>
             <option value="priceAsc">Price: Low to High</option>
             <option value="priceDesc">Price: High to Low</option>
@@ -69,7 +69,7 @@
       </div>
     </div>
   </div>
-  <div v-else class="spinner-border text-center" role="status">
+  <div v-else class="spinner-border mx-auto mt-5" role="status">
     <span class="visually-hidden">Loading...</span>
     <span class="visually-hidden">No Games Found</span>
   </div>
