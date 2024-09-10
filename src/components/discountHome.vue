@@ -4,7 +4,7 @@
 
         <!-- Loop through each published item -->
         <div class="row gy-4" v-if="discounts?.length">
-            <div class="col-md-4 mb-4" v-for="x in discounts" :key="x.id">
+            <div class="col-lg-4 col-md-6 mb-4" v-for="x in discounts" :key="x.id">
                 <div class="custom-card h-100 rounded-4 p-2 bg-base shadow-effect">
                     <div class="custom-card-image rounded-4">
                         <img :src="x.cover_image" alt="Game Cover">

@@ -49,18 +49,30 @@
         </div>
     
         <!-- Display Filtered and Sorted Games -->
-        <div class="row mt-4 border" v-if="filteredGames?.length > 0">
-          <div class="col-lg-6" v-for="game in filteredGames" :key="game.id">
-            <div class="card border mb-3">
-              <div class="card-body">
-                <h5 class="card-title fw-bold">Title: {{ game.title }}</h5>
-                <p class="card-text">Genre: {{ game.genre }}</p>
-                <p class="card-text">Price: ${{ game.price }}</p>
-              </div>
-            </div>
+        <div class="row gy-4" v-if="filteredGames?.length">
+    <div class="col-md-6 mb-4" v-for="x in filteredGames" :key="x.id">
+      <div class="custom-card h-100 rounded-4 p-2 bg-base shadow-effect">
+        <div class="custom-card-image rounded-4">
+          <img :src="x.cover_image" alt="Game Cover">
+        </div>
+        <div class="custom-card-content internal-screaming">
+          <h3 class="my-3 text-center">{{ x.title }}</h3>
+          <p class="text-center">{{ x.description }}</p>
+          <h4 class="text-center">$ {{ x.price }}</h4>
+          <div class="d-flex justify-content-evenly">
+            <!-- View Game Button -->
+            <router-link :to="{ name: 'ProductDetail', params: { id: x.id } }" class="btn btn-brand">View Game</router-link>
+            <!-- Add To Cart Button -->
+            <button @click="addToCart(x)" class="btn btn-brand">Add To Cart</button>
           </div>
         </div>
-        <p v-else class="text-center m-5 display-5">No games found.</p>
+      </div>
+    </div>
+  </div>
+  <div v-else class="spinner-border text-center" role="status">
+    <span class="visually-hidden">Loading...</span>
+    <span class="visually-hidden">No Games Found</span>
+  </div>
     </section>
 </template>
 

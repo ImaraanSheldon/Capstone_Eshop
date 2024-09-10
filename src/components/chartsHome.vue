@@ -1,7 +1,7 @@
 <template>
 
 <div class="row gy-4" v-if="charts?.length">
-    <div class="col-md-4 mb-4" v-for="x in charts" :key="x.id">
+    <div class="col-lg-4 mb-4" v-for="x in charts" :key="x.id">
       <div class="custom-card h-100 rounded-4 p-2 bg-base shadow-effect">
         <div class="custom-card-image rounded-4">
           <img :src="x.cover_image" alt="Game Cover">

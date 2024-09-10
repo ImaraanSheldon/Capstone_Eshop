@@ -1,5 +1,5 @@
 <template>
-    <div class="container my-5">
+    <div class="full-height my-5">
       <div v-if="product" class="row border">
         <!-- Left Block: Product Image -->
         <div class="col-lg-6 border">
@@ -19,25 +19,17 @@
   </template>
   
   <script setup>
-  import { ref, onMounted, computed } from 'vue'
+  import { onMounted, computed } from 'vue'
   import { useStore } from 'vuex'
   import { useRoute } from 'vue-router'
   
   const store = useStore()
   const route = useRoute()
-  const productId = computed(() => route.params.id)
-  const product = ref(null)
-  
-  const fetchProduct = async () => {
-    // Fetch product details based on the productId
-    product.value = await store.dispatch('fetchProductById', productId.value)
-  }
+  const product = computed(()=> store.state.product) 
 
   
   onMounted(() => {
-    fetchProduct()
-    console.log(product.value);
-    
+    store.dispatch('fetchProductById', route.params.id)
   })
   </script>
   

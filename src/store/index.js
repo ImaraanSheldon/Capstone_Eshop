@@ -209,9 +209,11 @@ export default createStore({
       }
     },
 
-    async fetchProductById(context) {
-      let { results } = await (await axios.get(`${portURL}games/:id`)).data;
-      context.commit("setProduct", results);
+    async fetchProductById(context, id) {
+      let { result } = await (await axios.get(`${portURL}games/${id}`)).data;
+      console.log(result);
+      context.commit("setProduct", result);
+    
     },
   },
   modules: {},

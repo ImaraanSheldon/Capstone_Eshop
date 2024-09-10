@@ -38,6 +38,8 @@ const games = computed(() => store.state.games)
 
 onMounted(() => {
   store.dispatch('fetchGames')
+  // console.log(games.value);
+  
 })
 
 const addToCart = (game) => {
