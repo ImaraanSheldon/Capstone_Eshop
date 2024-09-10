@@ -87,28 +87,46 @@ class Games {
     }
   }
 
-  // Fetch a single product by ID
-  fetchSingleGame(req, res) {
-    try {
-      const strQry = `
-            SELECT id, title, description, genre, release_date, price, developer, publisher, platform, cover_image, gameplay_imageOne, gameplay_imageTwo, rating, stock_quantity, amount_sold 
-            FROM games
-            WHERE id = ${req.params.id};
-            `;
-      DB.query(strQry, (err, result) => {
-        if (err) throw new Error(err);
-        res.json({
-          status: res.statusCode,
-          result: result[0],
-        });
-      });
-    } catch (e) {
-      res.json({
-        status: 404,
-        msg: e.message,
+// Fetch a single product by ID
+fetchSingleGame(req, res) {
+  const gameId = req.params.id;
+
+  // Ensure the ID is a valid integer to avoid SQL injection
+  if (isNaN(gameId)) {
+    return res.status(400).json({
+      status: 400,
+      msg: 'Invalid game ID format',
+    });
+  }
+
+  const strQry = `
+        SELECT id, title, description, genre, release_date, price, developer, publisher, platform, cover_image, gameplay_imageOne, gameplay_imageTwo, rating, stock_quantity, amount_sold 
+        FROM games
+        WHERE id = ?;
+        `;
+
+  DB.query(strQry, [gameId], (err, result) => {
+    if (err) {
+      console.error(err);  // Log the error for server-side diagnostics
+      return res.status(500).json({
+        status: 500,
+        msg: 'An error occurred while fetching the game',
       });
     }
-  }
+
+    if (result.length === 0) {
+      return res.status(404).json({
+        status: 404,
+        msg: 'Game not found',
+      });
+    }
+
+    res.status(200).json({
+      status: 200,
+      result: result[0],
+    });
+  });
+}
 
   // Add a new product
   addGame(req, res) {

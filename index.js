@@ -31,7 +31,7 @@ app.use('/games', gamesRouter);
 
 // Endpoint
 app.get('^/$|/eShop', (req, res) => {
-    res.status(200).sendFile(path.resolve('./static/html/index.html'));
+    res.status(200).sendFile(path.resolve('./static/Index.html'));
 });
 
 // Start the server
