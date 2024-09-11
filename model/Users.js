@@ -109,7 +109,7 @@ class Users {
             `;
 
       DB.query(strQry, (err) => {
-        if (err) throw new Error(error);
+        if (err) throw new Error(err);
         res.json({
           status: res.statusCode,
           msg: "A user's information was removed, permanently",
