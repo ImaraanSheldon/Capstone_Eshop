@@ -6,10 +6,12 @@
                 logo
             </div>
         </div>
-        <allGames/>
+
+        <h1 class="display-1 text-center">No Games Currently Scheduled To Be Released</h1>
+        <!-- <allGames/> -->
     </section>
 </template>
 
 <script setup>
-import allGames from '@/components/allGames.vue';
+// import allGames from '@/components/allGames.vue';
 </script>

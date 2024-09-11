@@ -1,4 +1,6 @@
-<template>
+<template>nigga</template>
+
+<!-- <template>
   <footer class="container fixed-bottom">
     <div class="row">
         <div class="col-sm-6 text-center">
@@ -94,4 +96,4 @@ export default {
     .socials{
       font-size:2rem;
     }
-</style>
+</style> -->

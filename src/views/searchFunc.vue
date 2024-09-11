@@ -37,7 +37,7 @@
         </form>
     
         <!-- Sorting Options -->
-        <div class="mt-5 row text-center">
+        <div class="my-5 row text-center">
           <label for="sortBy" class="form-label h2">Sort By:</label>
           <select v-model="sortOption" @change="applyFilters" class="form-select box rounded-pill">
             <option value="">Select Sorting Option</option>
@@ -105,6 +105,10 @@ const applyFilters = () => {
 watch(sortOption, () => {
   store.dispatch('sortGames', { sortBy: sortOption.value })
 })
+
+const addToCart = (game) => {
+    store.dispatch('toCart', game)
+}
 </script>
 
   
