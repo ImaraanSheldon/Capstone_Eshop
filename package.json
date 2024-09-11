@@ -14,9 +14,11 @@
     "js-cookie": "^3.0.5",
     "register-service-worker": "^1.7.2",
     "sweetalert2": "^11.12.4",
+    "toastify": "^2.0.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vue3-cookies": "^1.0.6",
+    "vue3-toastify": "^0.2.3",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

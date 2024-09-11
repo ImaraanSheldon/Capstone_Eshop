@@ -112,14 +112,63 @@ watch(sortOption, () => {
   .border {
     border: 1px solid #dee2e6;
   }
-  
-  .card-head {
-    padding: 15px;
-  }
 
   .box{
     height: 50px;
     border: 5px solid var(--Color-Accent-Pinot);
   }
+
+
+.card-head {
+    padding: 15px;
+}
+
+/* btn */
+.btn {
+    padding: 12px 28px;
+    font-weight: 700;
+    color: var(--Color-Text-Fondant);
+}
+
+.btn-brand {
+    background-color: var(--Color-Accent-Pinot);
+    color: var(--Color-Header-Blossom);
+    border-color: var(--Color-Header-Blossom);
+
+    &:hover,
+    :focus {
+        background-color: var(--Color-Background-Charcoal);
+        color: var(--Color-Header-Blossom);
+        border-color: var(--Color-Header-Blossom);
+    }
+}
+
+/* /btn/ */
+
+.link-custom {
+    font-weight: 700;
+    position: relative;
+
+    &:hover {
+        color: var(--Color-Header-Blossom);
+    }
+
+}
+
+.link-custom::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--Color-Header-Blossom);
+    position: absolute;
+    left: 0;
+    top: 110%;
+    transition: all 0.5s ease;
+}
+
+.link-custom:hover::after {
+    width: 100%;
+    transition: all 0.5 ease-in;
+}
   </style>
   

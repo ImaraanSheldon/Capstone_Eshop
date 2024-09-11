@@ -23,7 +23,8 @@ export default createStore({
     cart: JSON.parse(cookies.get("cart")) || [],
     token:null,
     role:null,
-    product: null
+    product: null,
+    isAuthenticated: false,
   },
   getters: {},
   mutations: {
@@ -68,6 +69,10 @@ export default createStore({
     setProduct(state, product) {
       state.product = product
     },
+    // logout
+    setAuthentication(state, status) {
+      state.isAuthenticated = status
+    }
   },
   actions: {
     // All Users
@@ -172,7 +177,7 @@ export default createStore({
         
         const response = await axios.post(`${portURL}users/login`, payload);
         const { message, result, token } = response.data;
-  
+        cookies.set('legitUser',{ message, result, token })
         if (result) {
           // Show success message with SweetAlert2
           await Swal.fire({
@@ -208,6 +213,7 @@ export default createStore({
         });
       }
     },
+    
 
     async fetchProductById(context, id) {
       let { result } = await (await axios.get(`${portURL}games/${id}`)).data;
@@ -215,6 +221,212 @@ export default createStore({
       context.commit("setProduct", result);
     
     },
+
+    async addProduct(context, payload) {
+      try {
+        const { msg } = await (await axios.post(`${portURL}games/register`, payload)).data;
+        if (msg) {
+          context.dispatch('fetchGames');
+          Swal.fire({
+            icon: 'success',
+            title: 'Yayy',
+            text: msg,
+            timer: 2000,
+            timerProgressBar: true,
+            position: 'bottom-end',
+            toast: true,
+            showConfirmButton: false
+          });
+        }
+      } catch (e) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: e.message,
+          timer: 2000,
+          timerProgressBar: true,
+          position: 'bottom-end',
+          toast: true,
+          showConfirmButton: false
+        });
+      }
+    },
+    async addUser(context, payload) {
+      try {
+        const { token, msg, error } = await (await axios.post(`${portURL}users/register`, payload)).data;
+        if (token) {
+          context.dispatch('fetchUsers');
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: msg,
+            timer: 2000,
+            timerProgressBar: true,
+            position: 'bottom-end',
+            toast: true,
+            showConfirmButton: false
+          });
+        } else {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Warning',
+            text: error,
+            timer: 2000,
+            timerProgressBar: true,
+            position: 'bottom-end',
+            toast: true,
+            showConfirmButton: false
+          });
+        }
+      } catch (e) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: e.message,
+          timer: 2000,
+          timerProgressBar: true,
+          position: 'bottom-end',
+          toast: true,
+          showConfirmButton: false
+        });
+      }
+    },
+    async deleteUser(context, id) {
+      try {
+        const { msg, err } = await (await axios.delete(`${portURL}users/${id}`)).data;
+        if (msg) {
+          context.dispatch('fetchUsers');
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: msg,
+            timer: 2000,
+            timerProgressBar: true,
+            position: 'bottom-end',
+            toast: true,
+            showConfirmButton: false
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: err,
+            timer: 2000,
+            timerProgressBar: true,
+            position: 'bottom-end',
+            toast: true,
+            showConfirmButton: false
+          });
+        }
+      } catch (e) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: e.message,
+          timer: 2000,
+          timerProgressBar: true,
+          position: 'bottom-end',
+          toast: true,
+          showConfirmButton: false
+        });
+      }
+    },
+    async deleteProduct(context, id) {
+      try {
+        const { msg, err } = await (await axios.delete(`${portURL}games/${id}`)).data;
+        if (msg) {
+          context.dispatch('fetchGames');
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: msg,
+            timer: 2000,
+            timerProgressBar: true,
+            position: 'bottom-end',
+            toast: true,
+            showConfirmButton: false
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: err,
+            timer: 2000,
+            timerProgressBar: true,
+            position: 'bottom-end',
+            toast: true,
+            showConfirmButton: false
+          });
+        }
+      } catch (e) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: e.message,
+          timer: 2000,
+          timerProgressBar: true,
+          position: 'bottom-end',
+          toast: true,
+          showConfirmButton: false
+        });
+      }
+    },
+    async editUser(context, user) {
+      try {
+        const { msg } = await (await axios.patch(`${portURL}users/${user.id}}`, user)).data;
+        if (msg) {
+          context.dispatch('fetchUsers');
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: msg,
+            timer: 2000,
+            timerProgressBar: true,
+            position: 'bottom-end',
+            toast: true,
+            showConfirmButton: false
+          });
+        }
+      } catch (e) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: e.message,
+          timer: 2000,
+          timerProgressBar: true,
+          position: 'bottom-end',
+          toast: true,
+          showConfirmButton: false
+        });
+      }
+    },
+    async editProduct(context, product) {
+      try {
+        await (axios.patch(`${portURL}games/${product.id}`, product)).data;
+        context.dispatch('fetchGames');
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Successfully updated product',
+          timer: 2000,
+          timerProgressBar: true,
+          position: 'bottom-end',
+          toast: true,
+          showConfirmButton: false
+        });
+      } catch (e) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: e.message,
+          timer: 2000,
+          timerProgressBar: true,
+          position: 'bottom-end',
+          toast: true,
+          showConfirmButton: false
+        });
+      }
+    }
   },
   modules: {},
 });

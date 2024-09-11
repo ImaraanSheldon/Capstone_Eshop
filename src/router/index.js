@@ -10,6 +10,9 @@ import bestSellers from '@/views/bestSellers.vue'
 import cartPage from '@/views/cartPage.vue'
 import SingleProduct from '@/views/singleProduct.vue'
 import LoginPage from '@/views/loginPage.vue'
+import AdminView from '@/views/adminView.vue'
+import { useCookies } from 'vue3-cookies'
+const {cookies} = useCookies()
 
 const routes = [
   {
@@ -61,6 +64,20 @@ const routes = [
     path: '/login',
     name: 'LoginPage',
     component: LoginPage
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: ()=>import('@/views/loginPage.vue'),
+    beforeEnter(){
+      cookies.remove('legitUser')
+      router.push({name:'login'})
+    }
+  },
+  {
+    path: '/admin',
+    name: 'adminView',
+    component: AdminView
   },
 ]
 
