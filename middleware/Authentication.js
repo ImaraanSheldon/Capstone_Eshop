@@ -1,6 +1,9 @@
 // Authentication
 import 'dotenv/config'
 import jwt from 'jsonwebtoken'
+import { config } from 'dotenv'
+
+config()
 
 const {sign, verify} = jwt
 
