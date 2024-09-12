@@ -162,9 +162,10 @@ fetchSingleGame(req, res) {
       let data = req.body;
       const strQry = `UPDATE games SET ? WHERE id = ${req.params.id}`;
       DB.query(strQry, [data], (err) => {
-        console.log(err);
+        // console.log(err);
         
         if (err) throw new Error("Failed to update product");
+        console.log(err)
         res.json({
           status: res.statusCode,
           msg: "Product updated successfully",
