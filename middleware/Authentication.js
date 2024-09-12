@@ -1,5 +1,5 @@
 // Authentication
-import 'dotenv/config'
+// import 'dotenv/config'
 import jwt from 'jsonwebtoken'
 import { config } from 'dotenv'
 
