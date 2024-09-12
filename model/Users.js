@@ -105,7 +105,7 @@ class Users {
   deleteUser(req, res) {
     try {
       const strQry = `
-            DELETE * FROM users WHERE id = ${req.params.id}
+            DELETE FROM users WHERE id = ${req.params.id}
             `;
 
       DB.query(strQry, (err) => {
