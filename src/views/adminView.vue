@@ -149,9 +149,9 @@
                             <td>{{ product.amount_sold }}</td>
                             <td>
                                 <button type="button" class="functionbtn bi bi-trash rounded-1"
-                                    @click="deleteProduct(product.id)"></button>
+                                    @click="deleteProduct(product.id)">delete</button>
                                 <button type="button" class="functionbtn bi bi-pen rounded-1" data-bs-toggle="modal"
-                                    :data-bs-target="`#editP${product.id}`">
+                                    :data-bs-target="`#editP${product.id}`">edit
                                 </button>
                                 <!-- Modal -->
                                 <div class="modal fade" :id="`editP${product.id}`" data-bs-backdrop="static"
@@ -258,7 +258,7 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="closeModal"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <input type="submit" class="" @click="createUser">
+                                                <button type="submit" class="" @click="createUser">Create</button>
                                             </div>
                                             </div>
                                     </form>

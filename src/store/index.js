@@ -7,7 +7,7 @@ import router from "@/router";
 
 const { cookies } = useCookies();
 
-const portURL = "http://localhost:4324/";
+const portURL = "https://capstone-eshop.onrender.com/";
 
 export default createStore({
   state: {
@@ -72,6 +72,9 @@ export default createStore({
     // logout
     setAuthentication(state, status) {
       state.isAuthenticated = status
+    },
+    setCart(state, value){
+      state.value = value
     }
   },
   actions: {
@@ -177,7 +180,7 @@ export default createStore({
         
         const response = await axios.post(`${portURL}users/login`, payload);
         const { message, result, token } = response.data;
-        cookies.set('legitUser',{ message, result, token })
+        cookies.set('LegitUser',{ message, result, token })
         if (result) {
           // Show success message with SweetAlert2
           await Swal.fire({

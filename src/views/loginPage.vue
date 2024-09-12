@@ -43,6 +43,13 @@ const errorMessage = computed(() => store.state.errorMessage)
 function loginUser() {
   isLoading.value = true
   store.dispatch('login', payload)
+  if(payload.userType === 'admin'){
+    router.push('/admin')
+  }else{
+    router.push('/')
+    console.log('memento');
+    
+  }
     // .finally(() => {
     //   isLoading.value = false
     // })
@@ -63,7 +70,7 @@ function logout() {
     
 
     // Redirect to the Discover page
-    router.push('/')
+    // router.push('/')
   }
 }
 </script>
