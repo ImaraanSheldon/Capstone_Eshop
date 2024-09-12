@@ -5,7 +5,7 @@ import { hash, compare } from "bcrypt";
 class Users {
   fetchUsers(req, res) {
     const myQry = `
-        SELECT username, userPass, email, full_name, account_status, userType, profile_picture, date_of_birth, gender FROM users
+        SELECT * FROM users
         `;
 
     DB.query(myQry, (err, results) => {
