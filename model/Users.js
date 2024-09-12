@@ -126,7 +126,7 @@ class Users {
   // login
   async loginUser(req, res) {
     try {
-      const { email, userPass, userType } = req.body;
+      const { email, userPass, } = req.body;
       const strQry = `
             SELECT * FROM users WHERE email = '${email}'
             `;
@@ -143,7 +143,6 @@ class Users {
             const token = createToken({
               userPass,
               email,
-              userType
             });
             res.json({
               status: res.statusCode,
