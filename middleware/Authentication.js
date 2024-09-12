@@ -12,7 +12,7 @@ function createToken(user){
         email: user.email,
         userPass: user.userPass,
     },
-    process.env.SECRET_KEY,
+    process.env.secretOrPrivateKey,
     {
         expiresIn: '1h'
     }
@@ -22,7 +22,7 @@ function verifyToken(req,res,next){
     const token = req?.headers["authorization"]
     if(token){
         if(
-            verify(token, process.env.SECRET_KEY)){
+            verify(token, process.env.secretOrPrivateKey)){
                 next()
             }else{
                 res?.json({
