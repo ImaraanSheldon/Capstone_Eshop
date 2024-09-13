@@ -13,6 +13,7 @@ import LoginPage from '@/views/loginPage.vue'
 import AdminView from '@/views/adminView.vue'
 import { useCookies } from 'vue3-cookies'
 import PfpPage from '@/views/pfpPage.vue'
+import ContactUs from '@/views/contactUs.vue'
 const {cookies} = useCookies()
 
 const routes = [
@@ -84,6 +85,11 @@ const routes = [
     path: '/pfp',
     name: 'pfp',
     component: PfpPage
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: ContactUs
   },
 ]
 

@@ -1,6 +1,4 @@
-<template>nigga</template>
-
-<!-- <template>
+<template>
   <footer class="container fixed-bottom">
     <div class="row">
         <div class="col-sm-6 text-center">
@@ -16,7 +14,7 @@
 
           <div class="d-flex align-items-baseline footer-icon">
             <i class="las la-envelope"></i>
-            <a class="ms-1" href="#">imaraansheldonis2302003@gmail.com</a>
+            <router-link class="ms-1" to="/login">Login</router-link>
           </div>
 
           <div class="d-flex align-items-baseline footer-icon">
@@ -26,7 +24,7 @@
 
           <div class="d-flex align-items-baseline footer-icon">
             <i class="las la-map-marker"></i>
-            <a class="ms-1" href="#Contact">Ottery, Cape Town, Western Cape</a>
+            <router-link class="ms-1" to="/contact">Contact Us</router-link>
           </div>
 
         </div>
@@ -96,4 +94,4 @@ export default {
     .socials{
       font-size:2rem;
     }
-</style> -->
+</style>
