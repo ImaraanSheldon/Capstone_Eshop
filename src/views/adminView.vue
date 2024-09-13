@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid section">
+  <div class="full-height bg-dark section">
     <div class="container">
       <h2 class="text-center text-decoration-underline pt-2">Admin</h2>
 

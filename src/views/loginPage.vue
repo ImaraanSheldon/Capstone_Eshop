@@ -51,10 +51,10 @@ const errorMessage = computed(() => store.state.errorMessage)
 function loginUser() {
   isLoading.value = true
   store.dispatch('login', payload)
-  if(loggedUser.value.userType === 'admin'){
+  if(payload === 'Illyna@example.com'){
     router.push('/admin')
   }else{
-    router.push('/pfp')
+    router.push('/')
     // console.log(token.value);
     
   }
