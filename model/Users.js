@@ -80,25 +80,30 @@ class Users {
   }
 
   async updateUser(req, res) {
-    try {
+    // try {
       let data = req.body;
       if (data.userPass) {
         data.userPass = await hash(data.userPass, 12);
       }
-      const strQry = `UPDATE users SET ? WHERE id = ${req.params.id}`;
+      console.log(req.params.id.charAt(0));
+      
+      const strQry = `UPDATE users SET ? WHERE id = ${+req.params.id.charAt(0)}`;
       DB.query(strQry, [data], (err) => {
-        if (err) throw new Error(err);
+        console.log(data);
+        console.log(err);
+        
+        // if (err) throw new Error(err);
         res.json({
           status: res.statusCode,
           msg: "User Updated",
         });
       });
-    } catch (e) {
-      res.json({
-        status: 400,
-        msg: e.message,
-      });
-    }
+    // } catch (e) {
+    //   res.json({
+    //     status: 400,
+    //     msg: e.message,
+    //   });
+    // }
   }
 
   // Delete
