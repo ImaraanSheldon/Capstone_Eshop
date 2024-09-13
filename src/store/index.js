@@ -3,7 +3,6 @@ import axios from "axios";
 import Swal from "sweetalert2/dist/sweetalert2";
 import { useCookies } from "vue3-cookies";
 import { applyToken } from "@/service/Authenticate";
-import router from "@/router";
 
 const { cookies } = useCookies();
 
@@ -24,7 +23,6 @@ export default createStore({
     token:null,
     role:null,
     product: null,
-    isAuthenticated: false,
   },
   getters: {},
   mutations: {
@@ -176,12 +174,12 @@ export default createStore({
     // login
     async login({ commit }, payload) {
       try {
-        console.log(payload);
         
         const response = await axios.post(`${portURL}users/login`, payload);
         const { message, result, token } = response.data;
         cookies.set('LegitUser',{ message, result, token })
         if (result) {
+          console.log(result);
           // Show success message with SweetAlert2
           await Swal.fire({
             title: 'Success!',
@@ -194,7 +192,11 @@ export default createStore({
           commit('setUser', { message, result, token });
           cookies.set('LegitUser', { token, message, result });
           applyToken(token);
-          router.push({ name: 'discover' });
+          // if(result.userType == 'admin'){
+          //   router.push({name : 'admin'})
+          // }else{
+          //   router.push({ name: 'pfp' });
+          // }
         } else {
           // Show error message with SweetAlert2
           await Swal.fire({
@@ -374,9 +376,12 @@ export default createStore({
         });
       }
     },
-    async editUser(context, user) {
+    async editUser(context, id) {
       try {
-        const { msg } = await (await axios.patch(`${portURL}users/${user.id}}`, user)).data;
+        console.log(id);
+        let user = JSON.parse(JSON.stringify(id))
+        delete user.id
+        const { msg } = await (await axios.patch(`${portURL}users/${id.id}}`,user)).data;
         if (msg) {
           context.dispatch('fetchUsers');
           Swal.fire({

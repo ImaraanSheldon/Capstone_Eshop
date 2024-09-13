@@ -3,7 +3,9 @@
         <div class="d-flex justify-content-between">
             <h1>Best Sellers</h1>
             <div>
-                <userImage/>
+                <router-link to="/login">
+                    <userImage/>
+                </router-link>
             </div>
         </div>
 

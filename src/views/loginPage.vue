@@ -2,6 +2,9 @@
   <div class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
     <div class="login-container p-4 p-md-5 bg-white shadow rounded">
       <h1 class="text-center mb-4">Login</h1>
+      <!-- <div v-if="token">
+        {{ token }}
+      </div> -->
       <form @submit.prevent="loginUser">
         <div class="mb-3">
           <label for="email" class="form-label">Email Address</label>
@@ -29,7 +32,9 @@
 import { reactive, ref, computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import { useCookies } from 'vue3-cookies';
 
+const {cookies} = useCookies()
 const store = useStore()
 const router = useRouter()
 const payload = reactive({
@@ -37,22 +42,26 @@ const payload = reactive({
   userPass: ""
 })
 const isLoading = ref(false)
+const token = cookies.get('LegitUser')
+// const isAdmin = ref(false)
+const loggedUser = ref(null)
 
 const errorMessage = computed(() => store.state.errorMessage)
 
 function loginUser() {
   isLoading.value = true
   store.dispatch('login', payload)
-  if(payload.userType === 'admin'){
+  if(loggedUser.value.userType === 'admin'){
     router.push('/admin')
   }else{
-    router.push('/')
-    console.log('memento');
+    router.push('/pfp')
+    // console.log(token.value);
     
   }
-    // .finally(() => {
-    //   isLoading.value = false
-    // })
+}
+if (token && token.result){
+  loggedUser.value = token.result;
+  console.log(loggedUser.value.userType) 
 }
 
 function logout() {
@@ -61,11 +70,12 @@ function logout() {
     document.cookie.split(";").forEach((c) => {
       document.cookie = c.trim().replace(/=.*/, "=;expires=Thu, 01 Jan 1970 00:00:00 GMT");
     });
-
+    
     // Optionally, you may want to dispatch a logout action to Vuex if needed
     onMounted(()=>{
       loginUser()
       store.dispatch('logout')
+
     })
     
 

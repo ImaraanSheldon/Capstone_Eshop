@@ -12,6 +12,7 @@ import SingleProduct from '@/views/singleProduct.vue'
 import LoginPage from '@/views/loginPage.vue'
 import AdminView from '@/views/adminView.vue'
 import { useCookies } from 'vue3-cookies'
+import PfpPage from '@/views/pfpPage.vue'
 const {cookies} = useCookies()
 
 const routes = [
@@ -78,6 +79,11 @@ const routes = [
     path: '/admin',
     name: 'adminView',
     component: AdminView
+  },
+  {
+    path: '/pfp',
+    name: 'pfp',
+    component: PfpPage
   },
 ]
 

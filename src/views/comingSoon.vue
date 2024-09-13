@@ -3,7 +3,9 @@
         <div class="d-flex justify-content-between">
             <h1>Coming Soon</h1>
             <div>
-                logo
+                <router-link to="/login">
+                    <userImage/>
+                </router-link>
             </div>
         </div>
 
