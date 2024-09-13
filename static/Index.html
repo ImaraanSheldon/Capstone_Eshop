@@ -3,9 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>API Endpoints Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    ahhh
+    <h1>API Endpoints Documentation</h1>
+
+    <h2>Users API Endpoints</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Method</th>
+                <th>Endpoint</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Fetch all users</td>
+                <td>GET</td>
+                <td><a href="/users">/users</a></td>
+            </tr>
+            <tr>
+                <td>Fetch a single user by ID</td>
+                <td>GET</td>
+                <td><a href="/users/:id">/users/:id</a></td>
+            </tr>
+            <tr>
+                <td>Register a new user</td>
+                <td>POST</td>
+                <td><a href="/users/register">/users/register</a></td>
+            </tr>
+            <tr>
+                <td>Update a user by ID</td>
+                <td>PATCH</td>
+                <td><a href="/users/:id">/users/:id</a></td>
+            </tr>
+            <tr>
+                <td>Delete a user by ID</td>
+                <td>DELETE</td>
+                <td><a href="/users/:id">/users/:id</a></td>
+            </tr>
+            <tr>
+                <td>Login a user</td>
+                <td>POST</td>
+                <td><a href="/users/login">/users/login</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Games API Endpoints</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Method</th>
+                <th>Endpoint</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Fetch all games</td>
+                <td>GET</td>
+                <td><a href="/games">/games</a></td>
+            </tr>
+            <tr>
+                <td>Fetch games published by Nintendo</td>
+                <td>GET</td>
+                <td><a href="/games/Nintendo_Published">/games/Nintendo_Published</a></td>
+            </tr>
+            <tr>
+                <td>Fetch games developed by Nintendo</td>
+                <td>GET</td>
+                <td><a href="/games/Nintendo_Developed">/games/Nintendo_Developed</a></td>
+            </tr>
+            <tr>
+                <td>Search games</td>
+                <td>GET</td>
+                <td><a href="/games/search?searchTerm=<term>&genre=<genre>&minPrice=<min>&maxPrice=<max>">/games/search</a></td>
+            </tr>
+            <tr>
+                <td>Fetch games with discounts</td>
+                <td>GET</td>
+                <td><a href="/games/discounts">/games/discounts</a></td>
+            </tr>
+            <tr>
+                <td>Fetch recent games</td>
+                <td>GET</td>
+                <td><a href="/games/recent">/games/recent</a></td>
+            </tr>
+            <tr>
+                <td>Fetch best sellers (charts)</td>
+                <td>GET</td>
+                <td><a href="/games/charts">/games/charts</a></td>
+            </tr>
+            <tr>
+                <td>Fetch a single game by ID</td>
+                <td>GET</td>
+                <td><a href="/games/:id">/games/:id</a></td>
+            </tr>
+            <tr>
+                <td>Register a new game</td>
+                <td>POST</td>
+                <td><a href="/games/register">/games/register</a></td>
+            </tr>
+            <tr>
+                <td>Update a game by ID</td>
+                <td>PATCH</td>
+                <td><a href="/games/:id">/games/:id</a></td>
+            </tr>
+            <tr>
+                <td>Delete a game by ID</td>
+                <td>DELETE</td>
+                <td><a href="/games/:id">/games/:id</a></td>
+            </tr>
+        </tbody>
+    </table>
+
 </body>
 </html>
